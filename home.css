@@ -13,8 +13,7 @@ body{
 	
 }
 .logo{
-	margin: auto;
-	margin-left: 0;
+	margin-block: auto;
 }
 .webname{
 	align-self: center;
