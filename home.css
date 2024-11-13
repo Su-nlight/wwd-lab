@@ -10,6 +10,18 @@ body{
 	border-radius:5px;
 	border-color:#004d40;
 	border-width:2px 2px 5px 2px;
+	
+}
+.logo{
+	margin: auto;
+	margin-left: 0;
+}
+.webname{
+	align-self: center;
+	align-items: center;
+	justify-self: center;
+	margin: auto;
+	
 }
 .navbar{
 	background-color: #795757;
