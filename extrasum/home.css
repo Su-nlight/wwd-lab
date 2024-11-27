@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*scroll-behavior: smooth;*/
+  }
+
+  /* Body and font settings */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  /* Header styles */
+  header {
+    background-color: #D76C82;
+    color: white;
+    text-align: center;
+    padding: 30px;
+  }
+
+  header h1 {
+    font-size: 3em;
+  }
+
+  /* Navbar Styles */
+  nav {
+    background-color: #B03052;
+    overflow: hidden;
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  nav ul li {
+    display: inline;
+    margin-inline: 2%;
+  }
+
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: inline-block;
+    font-size: 1.2em;
+  }
+
+  nav ul li a:hover {
+    background-color: #3D0301;
+    border-radius: 5px;
+  }
+
+  /* Menu section styles */
+  .menu-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    background-color: #fff;
+  }
+
+  .menu-item {
+    background-color: #ffebcd;
+    border-radius: 8px;
+    width: 250px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-item img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .menu-item h3 {
+    margin-top: 10px;
+    font-size: 1.5em;
+    color: #3D0301;
+  }
+
+  .menu-item p {
+    font-size: 1.2em;
+    color: #3D0301;
+  }
+
+  .menu-item .price {
+    font-size: 1.3em;
+    color: #B03052;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  /* Order form styles */
+  .order-form {
+    background-color: #fff;
+    padding: 30px;
+    margin: 20px auto;
+    width: 70%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .order-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .order-form label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+
+  .order-form input,
+  .order-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .order-form button {
+    background-color: #B03052;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+
+  .order-form button:hover {
+    background-color: #3D0301;
+  }
+
+  /* Footer Styles */
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+  }

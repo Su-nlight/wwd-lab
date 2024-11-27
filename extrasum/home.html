@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Delivery</title>
+  <link rel="icon" href="/assets/10366416.png" type="image/x-icon" />
+  <link rel="stylesheet" href="home.css">
+</head>
+
+<header>
+    <h1>Delicious Food Delivery</h1>
+    <p>Your favorite meals, delivered to your door</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Get Help</a></li>
+    </ul>
+  </nav>
+
+  <!-- Menu Section -->
+  <section class="menu-section" id="pricing">
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/250x150.png?text=Pizza" alt="Pizza">
+      <h3>Biryani</h3>
+      <p>Aromatic basmati rice with tender meat and a blend of spices.</p>
+      <p class="price">&#8377;299</p>
+    </div>
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/250x150.png?text=Burger" alt="Burger">
+      <h3>Burger</h3>
+      <p>Juicy mutton patty with fresh veggies and a tender bun filled with indian sauces.</p>
+      <p class="price">&#8377;150</p>
+    </div>
+    <div class="menu-item">
+      <img src="https://via.placeholder.com/250x150.png?text=Pasta" alt="Pasta">
+      <h3>Butter Chicken</h3>
+      <p>Creamy and rich chicken curry cooked with butter and spices.</p>
+      <p class="price">&#8377;350</p>
+    </div>
+  </section>
+
+  <!-- Order Form -->
+  <section class="order-form">
+    <h2>Place Your Order</h2>
+    <form action="#">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="address">Delivery Address:</label>
+      <textarea id="address" name="address" rows="4" required></textarea>
+
+      <label for="food">Choose Food:</label>
+      <select id="food" name="food" required>
+        <option value="pizza">Pizza</option>
+        <option value="burger">Burger</option>
+        <option value="pasta">Pasta</option>
+      </select>
+
+      <button type="submit">Order Now</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Delicious Food Delivery | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>
