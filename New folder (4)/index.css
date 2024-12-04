@@ -1,0 +1,45 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background-color: antiquewhite;
+    text-align: center;
+}
+a{
+    text-decoration:wavy;
+    color: brown;
+}
+a:hover{
+    color: #123456;
+    cursor:pointer;
+}
+a:visited{
+    color: #234567;
+}
+.gallery img{
+    animation: rotation 4s infinite linear;
+    border-radius: 15px;
+}
+.gallery rows{
+    display: flex;
+    flex: row;
+    align-self: center;
+    justify-content: center;
+}
+.gallery columns{
+    display: flex;
+    flex: row;
+    align-self: center;
+    justify-content: center;
+}
+.rotate {
+    animation: rotation 2s infinite linear;
+}
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+}
