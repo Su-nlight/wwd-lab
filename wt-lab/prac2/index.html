@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>University Entry Form</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>University Entry Form</h1>
+    
+    <form id="entryForm" novalidate>
+      <label>
+        Select Entry Type:
+        <select id="entryType" name="entryType" required>
+          <option value="">-- Select --</option>
+          <option value="student">Student</option>
+          <option value="faculty">Faculty</option>
+        </select>
+      </label>
+
+      <div id="studentFields" class="hidden">
+        <h2>Student Details</h2>
+        <label>
+          Full Name:
+          <input type="text" id="studentName" name="studentName" />
+        </label>
+        <label>
+          Student ID:
+          <input type="text" id="studentID" name="studentID" />
+        </label>
+        <label>
+          Email:
+          <input type="email" id="studentEmail" name="studentEmail" />
+        </label>
+        <label>
+          Course:
+          <input type="text" id="studentCourse" name="studentCourse" />
+        </label>
+        <label>
+          Year:
+          <input type="number" id="studentYear" name="studentYear" min="1" max="8" />
+        </label>
+      </div>
+
+      <div id="facultyFields" class="hidden">
+        <h2>Faculty Details</h2>
+        <label>
+          Full Name:
+          <input type="text" id="facultyName" name="facultyName" />
+        </label>
+        <label>
+          Employee ID:
+          <input type="text" id="facultyID" name="facultyID" />
+        </label>
+        <label>
+          Email:
+          <input type="email" id="facultyEmail" name="facultyEmail" />
+        </label>
+        <label>
+          Department:
+          <input type="text" id="facultyDept" name="facultyDept" />
+        </label>
+        <label>
+          Designation:
+          <input type="text" id="facultyDesignation" name="facultyDesignation" />
+        </label>
+      </div>
+
+      <div id="captchaSection" class="hidden">
+        <h3>Captcha Verification</h3>
+        <div id="captcha"></div>
+        <label>
+          Enter Captcha:
+          <input type="text" id="captchaInput" />
+        </label>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+    <div id="message"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
