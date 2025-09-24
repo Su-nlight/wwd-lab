@@ -1,0 +1,35 @@
+/* Root container */
+library {
+    display: block;
+    padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  /* Each book entry */
+  book {
+    display: block;
+    margin: 20px 0;
+    padding: 15px 20px;
+    border-left: 5px solid #4CAF50;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Book title */
+  title {
+    display: block;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  /* Author and year */
+  author, year {
+    display: block;
+    margin-left: 10px;
+    color: #555;
+    font-size: 1em;
+  }
+  
