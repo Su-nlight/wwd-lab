@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>University Entry Form</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 520px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    h1 {
+      text-align: center;
+      color: #2d3748;
+      margin-bottom: 30px;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    h2 {
+      color: #4a5568;
+      margin-bottom: 20px;
+      font-size: 20px;
+      font-weight: 600;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    h3 {
+      color: #4a5568;
+      margin-bottom: 15px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #4a5568;
+      font-size: 14px;
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background-color: #fff;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      transform: translateY(-1px);
+    }
+
+    input:hover, select:hover {
+      border-color: #cbd5e0;
+    }
+    
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    #message {
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 500;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .error {
+      background-color: #fed7d7;
+      color: #c53030;
+      border: 1px solid #feb2b2;
+    }
+
+    .success {
+      background-color: #c6f6d5;
+      color: #22543d;
+      border: 1px solid #9ae6b4;
+    }
+    
+    #captcha {
+      font-size: 24px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+      padding: 16px;
+      letter-spacing: 4px;
+      user-select: none;
+      text-align: center;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      color: #2d3748;
+      border: 2px solid #e2e8f0;
+      font-family: 'Courier New', monospace;
+    }
+
+    .field-section {
+      background-color: #f8fafc;
+      border-radius: 16px;
+      padding: 25px;
+      margin-bottom: 25px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .validation-hint {
+      font-size: 12px;
+      color: #718096;
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 15px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    @media (max-width: 600px) {
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+      
+      .container {
+        padding: 25px;
+        margin: 10px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+
+    select {
+      cursor: pointer;
+    }
+
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎓 University Entry Form</h1>
+    
+    <form id="entryForm" novalidate>
+      <div class="form-group">
+        <label for="entryType">Select Entry Type:</label>
+        <select id="entryType" name="entryType" required>
+          <option value="">-- Please Select --</option>
+          <option value="student">Student</option>
+          <option value="faculty">Faculty</option>
+        </select>
+      </div>
+
+      <div id="studentFields" class="hidden">
+        <div class="field-section">
+          <h2>📚 Student Details</h2>
+          
+          <div class="form-group">
+            <label for="studentName">Full Name:</label>
+            <input type="text" id="studentName" name="studentName" placeholder="Enter your full name" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="studentID">Student ID:</label>
+              <input type="text" id="studentID" name="studentID" placeholder="e.g., STU2024001" />
+            </div>
+            <div class="form-group">
+              <label for="studentYear">Year:</label>
+              <input type="number" id="studentYear" name="studentYear" min="1" max="8" placeholder="1-8" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="studentEmail">Email Address:</label>
+            <input type="email" id="studentEmail" name="studentEmail" placeholder="student@university.edu" />
+          </div>
+
+          <div class="form-group">
+            <label for="studentPhone">Phone Number:</label>
+            <input type="tel" id="studentPhone" name="studentPhone" placeholder="+1 (555) 123-4567" />
+            <div class="validation-hint">Format: +1 (555) 123-4567 or 10-digit number</div>
+          </div>
+
+          <div class="form-group">
+            <label for="studentCourse">Course:</label>
+            <input type="text" id="studentCourse" name="studentCourse" placeholder="e.g., Computer Science" />
+          </div>
+
+          <div class="form-group">
+            <label for="studentPassword">Password:</label>
+            <input type="password" id="studentPassword" name="studentPassword" placeholder="Create a strong password" />
+            <div class="validation-hint">Must be 8+ characters with uppercase, lowercase, number, and special character</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="facultyFields" class="hidden">
+        <div class="field-section">
+          <h2>👨‍🏫 Faculty Details</h2>
+          
+          <div class="form-group">
+            <label for="facultyName">Full Name:</label>
+            <input type="text" id="facultyName" name="facultyName" placeholder="Enter your full name" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="facultyID">Employee ID:</label>
+              <input type="text" id="facultyID" name="facultyID" placeholder="e.g., FAC2024001" />
+            </div>
+            <div class="form-group">
+              <label for="facultyDesignation">Designation:</label>
+              <input type="text" id="facultyDesignation" name="facultyDesignation" placeholder="e.g., Professor" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="facultyEmail">Email Address:</label>
+            <input type="email" id="facultyEmail" name="facultyEmail" placeholder="faculty@university.edu" />
+          </div>
+
+          <div class="form-group">
+            <label for="facultyPhone">Phone Number:</label>
+            <input type="tel" id="facultyPhone" name="facultyPhone" placeholder="+1 (555) 123-4567" />
+            <div class="validation-hint">Format: +1 (555) 123-4567 or 10-digit number</div>
+          </div>
+
+          <div class="form-group">
+            <label for="facultyDept">Department:</label>
+            <input type="text" id="facultyDept" name="facultyDept" placeholder="e.g., Computer Science" />
+          </div>
+
+          <div class="form-group">
+            <label for="facultyPassword">Password:</label>
+            <input type="password" id="facultyPassword" name="facultyPassword" placeholder="Create a strong password" />
+            <div class="validation-hint">Must be 8+ characters with uppercase, lowercase, number, and special character</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="captchaSection" class="hidden">
+        <div class="field-section">
+          <h3>🔐 Security Verification</h3>
+          <div id="captcha"></div>
+          <div class="form-group">
+            <label for="captchaInput">Enter Captcha:</label>
+            <input type="text" id="captchaInput" placeholder="Enter the code shown above" />
+          </div>
+        </div>
+      </div>
+
+      <button type="submit">✨ Submit Application</button>
+    </form>
+    
+    <div id="message"></div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const entryType = document.getElementById("entryType");
+      const studentFields = document.getElementById("studentFields");
+      const facultyFields = document.getElementById("facultyFields");
+      const captchaSection = document.getElementById("captchaSection");
+      const captchaDiv = document.getElementById("captcha");
+      const captchaInput = document.getElementById("captchaInput");
+      const form = document.getElementById("entryForm");
+      const message = document.getElementById("message");
+
+      let currentCaptcha = "";
+
+      function generateCaptcha() {
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        let captcha = "";
+        for (let i = 0; i < 6; i++) {
+          captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        currentCaptcha = captcha;
+        captchaDiv.textContent = captcha;
+      }
+
+      function resetForm() {
+        form.reset();
+        studentFields.classList.add("hidden");
+        facultyFields.classList.add("hidden");
+        captchaSection.classList.add("hidden");
+        message.textContent = "";
+        message.className = "";
+        currentCaptcha = "";
+        captchaDiv.textContent = "";
+      }
+
+      entryType.addEventListener("change", () => {
+        message.textContent = "";
+        message.className = "";
+        
+        if (entryType.value === "student") {
+          studentFields.classList.remove("hidden");
+          facultyFields.classList.add("hidden");
+          captchaSection.classList.remove("hidden");
+          generateCaptcha();
+        } else if (entryType.value === "faculty") {
+          facultyFields.classList.remove("hidden");
+          studentFields.classList.add("hidden");
+          captchaSection.classList.remove("hidden");
+          generateCaptcha();
+        } else {
+          studentFields.classList.add("hidden");
+          facultyFields.classList.add("hidden");
+          captchaSection.classList.add("hidden");
+        }
+      });
+
+      function validateEmail(email) {
+        const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return re.test(email);
+      }
+
+      function validatePhone(phone) {
+        // Remove all non-digit characters
+        const cleanPhone = phone.replace(/\D/g, '');
+        
+        // Check for US format: 10 digits or 11 digits starting with 1
+        if (cleanPhone.length === 10) {
+          return /^[2-9]\d{2}[2-9]\d{6}$/.test(cleanPhone);
+        } else if (cleanPhone.length === 11 && cleanPhone[0] === '1') {
+          return /^1[2-9]\d{2}[2-9]\d{6}$/.test(cleanPhone);
+        }
+        
+        return false;
+      }
+
+      function validatePassword(password) {
+        // At least 8 characters, 1 uppercase, 1 lowercase, 1 number, 1 special character
+        const minLength = password.length >= 8;
+        const hasUpper = /[A-Z]/.test(password);
+        const hasLower = /[a-z]/.test(password);
+        const hasNumber = /\d/.test(password);
+        const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        
+        return minLength && hasUpper && hasLower && hasNumber && hasSpecial;
+      }
+
+      function validateName(name) {
+        // At least 2 characters, only letters and spaces
+        return name.length >= 2 && /^[a-zA-Z\s]+$/.test(name);
+      }
+
+      function showMessage(text, type) {
+        message.innerHTML = text;
+        message.className = type;
+        message.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        message.textContent = "";
+        message.className = "";
+        
+        let valid = true;
+        let errors = [];
+
+        if (!entryType.value) {
+          valid = false;
+          errors.push("Please select entry type.");
+        }
+
+        if (entryType.value === "student") {
+          const name = document.getElementById("studentName").value.trim();
+          const id = document.getElementById("studentID").value.trim();
+          const email = document.getElementById("studentEmail").value.trim();
+          const phone = document.getElementById("studentPhone").value.trim();
+          const course = document.getElementById("studentCourse").value.trim();
+          const year = document.getElementById("studentYear").value.trim();
+          const password = document.getElementById("studentPassword").value;
+
+          if (!name || !validateName(name)) {
+            valid = false;
+            errors.push("Valid student name is required (letters and spaces only, minimum 2 characters).");
+          }
+          if (!id || id.length < 3) {
+            valid = false;
+            errors.push("Student ID is required (minimum 3 characters).");
+          }
+          if (!email || !validateEmail(email)) {
+            valid = false;
+            errors.push("Valid student email address is required.");
+          }
+          if (!phone || !validatePhone(phone)) {
+            valid = false;
+            errors.push("Valid phone number is required (US format: 10 digits or +1 followed by 10 digits).");
+          }
+          if (!course || course.length < 2) {
+            valid = false;
+            errors.push("Course name is required (minimum 2 characters).");
+          }
+          if (!year || isNaN(year) || year < 1 || year > 8) {
+            valid = false;
+            errors.push("Student year must be between 1 and 8.");
+          }
+          if (!password || !validatePassword(password)) {
+            valid = false;
+            errors.push("Password must be at least 8 characters with uppercase, lowercase, number, and special character.");
+          }
+        }
+
+        if (entryType.value === "faculty") {
+          const name = document.getElementById("facultyName").value.trim();
+          const id = document.getElementById("facultyID").value.trim();
+          const email = document.getElementById("facultyEmail").value.trim();
+          const phone = document.getElementById("facultyPhone").value.trim();
+          const dept = document.getElementById("facultyDept").value.trim();
+          const designation = document.getElementById("facultyDesignation").value.trim();
+          const password = document.getElementById("facultyPassword").value;
+
+          if (!name || !validateName(name)) {
+            valid = false;
+            errors.push("Valid faculty name is required (letters and spaces only, minimum 2 characters).");
+          }
+          if (!id || id.length < 3) {
+            valid = false;
+            errors.push("Faculty ID is required (minimum 3 characters).");
+          }
+          if (!email || !validateEmail(email)) {
+            valid = false;
+            errors.push("Valid faculty email address is required.");
+          }
+          if (!phone || !validatePhone(phone)) {
+            valid = false;
+            errors.push("Valid phone number is required (US format: 10 digits or +1 followed by 10 digits).");
+          }
+          if (!dept || dept.length < 2) {
+            valid = false;
+            errors.push("Faculty department is required (minimum 2 characters).");
+          }
+          if (!designation || designation.length < 2) {
+            valid = false;
+            errors.push("Faculty designation is required (minimum 2 characters).");
+          }
+          if (!password || !validatePassword(password)) {
+            valid = false;
+            errors.push("Password must be at least 8 characters with uppercase, lowercase, number, and special character.");
+          }
+        }
+
+        // Captcha validation
+        const captchaEntered = captchaInput.value.trim();
+        if (!captchaEntered) {
+          valid = false;
+          errors.push("Captcha verification is required.");
+        } else if (captchaEntered !== currentCaptcha) {
+          valid = false;
+          errors.push("Captcha does not match. Please try again.");
+          generateCaptcha();
+          captchaInput.value = "";
+        }
+
+        if (!valid) {
+          showMessage(errors.join("<br>"), "error");
+          return;
+        }
+
+        // If valid, show success message and reset form
+        showMessage(`🎉 Successfully submitted ${entryType.value} application! Welcome to our university community.`, "success");
+        
+        // Reset form after a short delay
+        setTimeout(() => {
+          resetForm();
+        }, 3000);
+      });
+
+      // Real-time phone formatting
+      document.getElementById("studentPhone")?.addEventListener("input", formatPhoneInput);
+      document.getElementById("facultyPhone")?.addEventListener("input", formatPhoneInput);
+
+      function formatPhoneInput(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length >= 6) {
+          if (value.length === 10) {
+            value = `(${value.slice(0,3)}) ${value.slice(3,6)}-${value.slice(6)}`;
+          } else if (value.length === 11 && value[0] === '1') {
+            value = `+1 (${value.slice(1,4)}) ${value.slice(4,7)}-${value.slice(7)}`;
+          }
+        }
+        e.target.value = value;
+      }
+    });
+  </script>
+</body>
+</html>
