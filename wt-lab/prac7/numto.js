@@ -2,7 +2,7 @@
 const inputs = process.argv.slice(2);
 
 if (inputs.length === 0) {
-  console.log("Usage: node convert.js <number1> <number2> ...");
+  console.log("Usage: node numto.js <number1> <number2> ...");
   process.exit(1);
 }
 
