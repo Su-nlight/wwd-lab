@@ -1,23 +1,23 @@
-// convert.js
+// Get all command line arguments after the script name
+const inputs = process.argv.slice(2);
 
-// Read command line argument
-const input = process.argv[2];
-
-if (!input) {
-  console.log("Usage: node convert.js <number>");
+if (inputs.length === 0) {
+  console.log("Usage: node convert.js <number1> <number2> ...");
   process.exit(1);
 }
 
-// Convert to number
-const num = Number(input);
+inputs.forEach((input) => {
+  const num = Number(input);
 
-// Validate input
-if (isNaN(num)) {
-  console.log("Please enter a valid number.");
-  process.exit(1);
-}
+  if (isNaN(num)) {
+    console.log(`'${input}' is not a valid number.`);
+    return;
+  }
 
-console.log(`Decimal: ${num}`);
-console.log(`Hexadecimal: ${num.toString(16)}`);
-console.log(`Octal: ${num.toString(8)}`);
-console.log(`Binary: ${num.toString(2)}`);
+  console.log(`\nNumber: ${num}`);
+  console.log(`  Hexadecimal: ${num.toString(16)}`);
+  console.log(`  Octal:       ${num.toString(8)}`);
+  console.log(`  Binary:      ${num.toString(2)}`);
+});
+
+console.log(); // just for a clean ending
